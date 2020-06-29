@@ -1,16 +1,21 @@
 {
   "name": "thorium-api",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.5.0",
+  "description": "Thorium API",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:server": "nodemon server.js"
+    "start": "nodemon server.js"
   },
-  "author": "Lenny Esquivel",
+  "author": "Lenny Esquivel / Francisco Reyna",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.4"
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.4",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.2.3"
   }
 }
