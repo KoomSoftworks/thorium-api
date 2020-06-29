@@ -13,7 +13,7 @@ module.exports = (sequelize, Sequelize) => {
 		  type: Sequelize.STRING
 	  },
 	  projects: {
-		  type: Sequelize.STRING
+		  type: Sequelize.RANGE(Sequelize.INTEGER)
 	  }
 	});
 	

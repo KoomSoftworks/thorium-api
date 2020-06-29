@@ -7,18 +7,23 @@ checkDuplicateUserNameOrEmail = (req, res, next) => {
 		where: { username: req.body.username }
 	}).then(user => {
 		if(user){
-			res.status(400).send("Username is already in use.");
-			return;
+			return res.status(400).send({
+				statusCode: 400,
+				message: "Username is already in use.",
+				data: {}
+			});
 		}
 		
 		User.findOne({ 
 			where: { email: req.body.email } 
 		}).then(user => {
 			if(user){
-				res.status(400).send("Email is already in use.");
-				return;
+				return res.status(400).send({
+					statusCode: 400,
+					message: "Email is already in use.",
+					data: {}
+				});
 			}
-				
 			next();
 		});
 	});

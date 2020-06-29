@@ -11,11 +11,19 @@ exports.signup = (req, res) => {
 		username: req.body.username,
 		email: req.body.email,
 		password: bcrypt.hashSync(req.body.password, 8),
-		projects: ''
+		projects: []
 	}).then(user => {
-		res.send(user.username + " has been registered.");
+		res.status(200).send({
+			statusCode: 200,
+			message: user.username + " has been registered.",
+			data: {}
+		});
 	}).catch(err => {
-		res.status(500).send("Error -> " + err);
+		res.status(500).send({
+			statusCode: 500,
+			message: err,
+			data: {}
+		});
 	})
 }
 
@@ -23,20 +31,40 @@ exports.signin = (req, res) => {
 	User.findOne({
 		where: { username: req.body.username }
 	}).then(user => {
-		if (!user) { return res.status(404).send('User has not been found.'); }
+		if (!user) { 
+			return res.status(404).send({
+				statusCode: 404,
+				message: 'User has not been found.',
+				data: {}
+			}); 
+		}
 
 		let passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
 		if (!passwordIsValid) {
-			return res.status(401).send({ auth: false, accessToken: null, reason: "Invalid password." });
+			return res.status(401).send({
+				statusCode: 401, 
+				message: "Invalid password.",
+				data: {}
+			});
 		}
 		
 		let token = jwt.sign({ id: user.id }, config.secret, {
 		  expiresIn: 86400 // 24
 		});
 		
-		res.status(200).send({ auth: true, accessToken: token });
+		res.status(200).send({ 
+			statusCode: 200,
+			message: 'Success',
+			data: {
+				accessToken: token
+			} 
+		});
 		
 	}).catch(err => {
-		res.status(500).send('Error -> ' + err);
+		 res.status(500).send({
+			statusCode: 500,
+			message: err,
+			data: {}
+		}); 
 	});
 }

@@ -4,25 +4,29 @@ const db = require('../config/db.config.js');
 
 verifyToken = (req, res, next) => {
 	let token = req.get('Token');
-  console.log(token);
+	
 	if (!token){
 		return res.status(403).send({ 
-			auth: false, message: 'No token provided.' 
+			statusCode: 403,
+			message: 'No token provided.',
+			data: {}
 		});
 	}
 
 	jwt.verify(token, config.secret, (err, decoded) => {
 		if (err){
 			return res.status(500).send({ 
-					auth: false, 
-					message: 'Fail to Authentication. ' + err 
-				});
+				statusCode: 500, 
+				message: 'Failed to Authentication. ' + err,
+				data: {}
+			});
 		}
+
 		return res.status(200).send({
-			auth: true,
-			message: "Token validated."
+			statusCode: 200,
+			message: "Token validated.",
+			data: {}
 		});
-		next();
 	});
 }
 

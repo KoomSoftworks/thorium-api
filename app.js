@@ -21,10 +21,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res, next) => {
-    res.send('Working');
-});
-
 function initial(){}
 
 module.exports = app;
