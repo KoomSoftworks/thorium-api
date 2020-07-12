@@ -52,7 +52,7 @@ exports.signin = (req, res) => {
 		  expiresIn: 86400 // 24
 		});
 		
-		res.status(200).send({ 
+		res.status(200).send({
 			statusCode: 200,
 			message: 'Success',
 			data: {
