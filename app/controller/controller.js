@@ -1,10 +1,8 @@
 const db = require('../config/db.config.js');
-const config = require('../config/config.js');
 const User = db.user;
 
 let jwt = require('jsonwebtoken');
 let bcrypt = require('bcryptjs');
-const env = require('../config/env.js');
 
 exports.signup = (req, res) => {
 	User.create({
