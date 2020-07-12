@@ -7,10 +7,10 @@ const sequelize = new Sequelize(process.env.database, process.env.username, proc
   operatorsAliases: false,
  
   pool: {
-    max: process.env.max,
-    min: process.env.min,
-    acquire: process.env.acquire,
-    idle: process.env.idle
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
   }
 });
  
