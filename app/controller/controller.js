@@ -49,7 +49,7 @@ exports.signin = (req, res) => {
 			});
 		}
 		
-		let token = jwt.sign({ id: user.id }, (config.secret || env.SECRET), {
+		let token = jwt.sign({ id: user.id }, (config.secret || process.env.SECRET), {
 		  expiresIn: 86400 // 24
 		});
 		
