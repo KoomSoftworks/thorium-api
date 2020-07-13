@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
         browserId: {
             type: Sequelize.INTEGER,
             primaryKey: true,
-            allowNull: true,
+            allowNull: false,
             autoIncremente: true
         },
         name : {
