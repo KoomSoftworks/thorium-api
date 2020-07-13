@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(process.env.database, process.env.username, process.env.password, {
-  host: process.env.host,
-  dialect: process.env.dialect,
-  operatorsAliases: false,
+
+const sequelize = new Sequelize(process.env.DATABASE, process.env.USERNAMEDB, process.env.PASSWORD, {
+  host: process.env.HOST,
+  dialect: process.env.DIALECT,
+  operatorsAliases: 0,
  
   pool: {
     max: 5,
