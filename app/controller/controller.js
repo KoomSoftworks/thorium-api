@@ -1,10 +1,8 @@
 const db = require('../config/db.config.js');
-const config = require('../config/config.js');
 const User = db.user;
 
 let jwt = require('jsonwebtoken');
 let bcrypt = require('bcryptjs');
-const env = require('../config/env.js');
 
 exports.signup = (req, res) => {
 	User.create({
@@ -49,7 +47,7 @@ exports.signin = (req, res) => {
 			});
 		}
 		
-		let token = jwt.sign({ id: user.id }, (config.secret || env.SECRET), {
+		let token = jwt.sign({ id: user.id }, (process.env.SECRET), {
 		  expiresIn: 86400 // 24
 		});
 		
