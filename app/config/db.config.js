@@ -19,5 +19,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
  
 db.user = require('../model/user.model.js')(sequelize, Sequelize);
+db.browser = require('../model/browser.model')(sequelize, Sequelize);
+db.platform = require('../model/platform.model')(sequelize, Sequelize);
 
 module.exports = db;
