@@ -48,7 +48,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
-                model: 'status',
+                model: 'statuses',
                 key: 'statusId'
             }
         },
@@ -56,7 +56,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
-                model : 'testCases',
+                model : 'testcases',
                 key: 'testId'
             }
         }
